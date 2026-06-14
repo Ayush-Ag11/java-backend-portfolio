@@ -49,3 +49,16 @@ Stack overflow = too many frames, no space left
 | Shared across threads | Yes | No — each thread has its own stack |
 | Size | Large (GBs) | Small (512KB–1MB per thread) |
 | Error when full | OutOfMemoryError | StackOverflowError |
+
+
+## OutOfMemoryError experiment
+- Heap exhausted after: 1969 MB
+- Error: OutOfMemoryError: Java heap space
+- Cause: list held references to all objects → GC could not collect
+- Type: java.lang.Error (not Exception)
+
+## OOM types to know for interviews
+- Java heap space       → too many live objects
+- GC overhead exceeded  → GC working but nothing freed
+- Metaspace             → too many classes loaded
+- Direct buffer memory  → NIO off-heap exhausted
